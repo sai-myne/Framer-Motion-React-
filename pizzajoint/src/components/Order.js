@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const containerVariants = {
@@ -32,10 +32,16 @@ const childVariants = {
   }
 }
 
-const Order = ({ pizza }) => {
-  const [showTitle, setShowTitle] = useState(true);
+const Order = ({ pizza, setShowModal }) => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowModal(true)
+    }, 5000)
+  }, [setShowModal])
+
   setTimeout(() => {
-    setShowTitle(false);
+    setShowModal(false);
   }, 4000);
   return (
     <motion.div className="container order"
